@@ -112,6 +112,9 @@ class ProductsPage(Base):
                     print("The Next Page")
             except TimeoutException:
                 print("The End of Products List")
+            url_page_1 = self.url_parse()
+            self.driver.get(url_page_1[0])
+            self.get_current_url()
             Logger.add_end_step(url=self.driver.current_url, method="select_filter_by_earrings")
 
     """ Метод сравнения названия и цены продукта с плитки из списка товаров с детальной страницей товара """

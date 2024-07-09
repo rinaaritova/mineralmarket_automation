@@ -92,3 +92,10 @@ class Base:
             return True
         else:
             return False
+
+    """ Метод разделения url до и после знака вопроса """
+    def url_parse(self):
+        full_url = self.driver.current_url
+        parsed_url = full_url.split('?', 1)
+        print(parsed_url)
+        return parsed_url
