@@ -1,0 +1,88 @@
+
+-----
+Test: test_add_product_to_cart.py::test_select_product_by_stone_and_type (call)
+Start time: 2024-07-08 17:43:30.589473
+Start name method: authorization
+
+End time: 2024-07-08 17:43:43.754446
+End name method: authorization
+URL: https://mineralmarket.ru/
+
+-----
+
+-----
+Test: test_add_product_to_cart.py::test_select_product_by_stone_and_type (call)
+Start time: 2024-07-08 17:43:43.780828
+Start name method: select_filter_talisman_stone
+
+End time: 2024-07-08 17:43:44.217610
+End name method: select_filter_talisman_stone
+URL: https://mineralmarket.ru/opredelenie-kamnya
+
+-----
+
+-----
+Test: test_add_product_to_cart.py::test_select_product_by_stone_and_type (call)
+Start time: 2024-07-08 17:43:44.219765
+Start name method: enter_customer_name
+
+End time: 2024-07-08 17:43:44.269931
+End name method: enter_customer_name
+URL: https://mineralmarket.ru/opredelenie-kamnya
+
+-----
+
+-----
+Test: test_add_product_to_cart.py::test_select_product_by_stone_and_type (call)
+Start time: 2024-07-08 17:43:44.270932
+Start name method: enter_birthday
+
+End time: 2024-07-08 17:43:44.430601
+End name method: enter_birthday
+URL: https://mineralmarket.ru/opredelenie-kamnya
+
+-----
+
+-----
+Test: test_add_product_to_cart.py::test_select_product_by_stone_and_type (call)
+Start time: 2024-07-08 17:43:44.431617
+Start name method: confirm_define_stone
+
+End time: 2024-07-08 17:43:45.135109
+End name method: confirm_define_stone
+URL: https://mineralmarket.ru/rezultat-opredelenie-kamnya
+
+-----
+
+-----
+Test: test_add_product_to_cart.py::test_select_product_by_stone_and_type (call)
+Start time: 2024-07-08 17:43:45.162473
+Start name method: select_main_stone
+
+End time: 2024-07-08 17:43:53.419883
+End name method: select_main_stone
+URL: https://mineralmarket.ru/856-serdolik?page=5
+
+-----
+
+-----
+Test: test_add_product_to_cart.py::test_select_product_by_stone_and_type (call)
+Start time: 2024-07-08 17:43:53.423529
+Start name method: select_filter_by_earrings
+
+End time: 2024-07-08 17:43:59.074325
+End name method: select_filter_by_earrings
+URL: https://mineralmarket.ru/1309-serdolik
+
+-----
+
+-----
+Test: test_add_product_to_cart.py::test_select_product_by_stone_and_type (call)
+Start time: 2024-07-08 17:43:59.076306
+Start name method: compare_name_price_tile_and_details
+
+End time: 2024-07-08 17:44:18.028967
+End name method: compare_name_price_tile_and_details
+URL: https://mineralmarket.ru/serdolik/527849-sergi-serdolik-botsvana-serebro-925-pr-rodir-bel.html
+
+-----
