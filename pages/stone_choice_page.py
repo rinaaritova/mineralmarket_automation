@@ -40,7 +40,7 @@ class StoneChoice(Base):
 
     # Actions
     def input_customer_name(self, name):
-        self.get_customer_name().send_keys(name)
+        self.get_customer_name().send_keys(name + ' ')
         print("Enter Customer Name")
 
     # def select_day_dropdown(self, day):

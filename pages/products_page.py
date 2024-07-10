@@ -19,12 +19,11 @@ class ProductsPage(Base):
     sort_by = "//select[@id='sort-select']"
     product_labels = "//span[@class='grid-name']"
     next_page_button = "//a[contains(@class,'next_page page')]"
-    add_to_cart_buttons = "//a[contains(@id, 'AddToCartButton')]"
+    # add_to_cart_buttons = "//a[contains(@id, 'AddToCartButton')]"
     images_list = "//ul[@id='product_list ']/li/div"
     prices_list = "//ul[@id='product_list ']/li/div/div/div/div/div/span/span"
     name_in_details = "//h1[@itemprop='name']"
     price_in_details = "//span[@id='our_price_display']"
-    first_page = ""
 
     # Getters
     def get_filter_by_earrings(self):

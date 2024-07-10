@@ -12,69 +12,44 @@ class DetailsPage(Base):
 
     # Locators
 
-    main_stone_string = "//h1[@class='category-name']"
-    filter_by_earrings = "//a[contains(text(),'Серьги')]"
-    sort_by = "//select[@id='sort-select']"
-    product_labels = "//span[@class='grid-name']"
-    next_page_button = "//a[@class='next_page page']"
-    add_to_cart_buttons = "//a[contains(@id, 'AddToCartButton')]"
-    images_list = "//ul[@id='product_list ']/li/div"
-    prices_list = "//ul[@id='product_list ']/li/div/div/div/div/div/span/span"
+    name_in_details = "//h1[@itemprop='name']"
+    price_in_details = "//span[@id='our_price_display']"
+    add_to_cart_button = "//input[contains(@id, 'AddToCartButton')]"
+    go_to_cart_link = "//p[@id='gotocart']"
 
     # Getters
-    def get_filter_by_earrings(self):
-        return WebDriverWait(self.driver, 30).until(ec.element_to_be_clickable((By.XPATH, self.filter_by_earrings)))
 
-    def get_sort_by(self):
-        return WebDriverWait(self.driver, 30).until(ec.element_to_be_clickable((By.XPATH, self.sort_by)))
+    def get_name_in_details(self):
+        return WebDriverWait(self.driver, 30).until(ec.element_to_be_clickable((By.XPATH, self.name_in_details)))
 
-    def get_next_page_button(self):
-        return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.next_page_button)))
+    def get_price_in_details(self):
+        return WebDriverWait(self.driver, 30).until(ec.element_to_be_clickable((By.XPATH, self.price_in_details)))
 
-    def get_add_to_cart(self):
-        elements_add_to_cart = self.driver.find_elements(By.XPATH, self.add_to_cart_buttons)
-        return elements_add_to_cart[1]
+    def get_add_to_cart_button(self):
+        return WebDriverWait(self.driver, 30).until(ec.element_to_be_clickable((By.XPATH, self.add_to_cart_button)))
 
-    def get_image_from_list(self):
-        elements_images_list = self.driver.find_elements(By.XPATH, self.images_list)
-        return elements_images_list[4]
-
-    def get_elements_products_labels(self):
-        return self.driver.find_elements(By.XPATH, self.product_labels)
-
-    def get_product_label(self):
-        elements_product_labels = self.driver.find_elements(By.XPATH, self.product_labels)
-        return elements_product_labels[4]
-
-    def get_product_price(self):
-        elements_prices_list = self.driver.find_elements(By.XPATH, self.prices_list)
-        return elements_prices_list[9]
+    def get_go_to_cart_link(self):
+        return WebDriverWait(self.driver, 30).until(ec.element_to_be_clickable((By.XPATH, self.go_to_cart_link)))
 
     # Actions
-    def click_filter_by_earrings(self):
-        self.get_filter_by_earrings().click()
-        print("Click Filter By Earrings")
 
-    def click_sort_by(self):
-        self.get_sort_by().click()
-        print("Click Sort By")
+    def click_add_to_cart_button(self):
+        self.get_add_to_cart_button().click()
+        print("Click Add To Cart")
 
-    def sort_by_price_asc(self):
-        select = Select(self.get_sort_by())
-        select.select_by_index(1)
-
-    def click_next_page_button(self):
-        self.get_next_page_button().click()
-        print("Click Next Page Button")
-
-    def click_add_to_cart(self):
-        self.get_add_to_cart().click()
-        print("Click Add to Cart")
-
-    def click_image_from_list(self):
-        self.get_image_from_list().click()
-        print("Click Image From Products")
+    def click_go_to_cart(self):
+        self.get_go_to_cart_link().click()
+        print("Click Go To Cart Link")
 
     # Methods
 
-    """ Метод проверки соответствия выбранного фильтра по типу украшения 'Серьги' списку товаров по всем выданным страницам """
+    """ Метод добавления товара в корзину и перехода на страницу заказа """
+
+    def add_to_cart_and_move_to_order(self):
+        with allure.step("Select Filter Talisman-Stone"):
+            Logger.add_start_step(method="select_filter_talisman_stone")
+            self.get_current_url()
+            self.click_add_to_cart_button()
+            self.click_go_to_cart()
+            self.get_current_url()
+            Logger.add_end_step(url=self.driver.current_url, method="select_filter_talisman_stone")

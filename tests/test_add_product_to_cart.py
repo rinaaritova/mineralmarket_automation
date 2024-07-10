@@ -1,3 +1,4 @@
+from pages.details_page import DetailsPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.products_page import ProductsPage
@@ -27,8 +28,8 @@ def test_select_product_by_stone_and_type(set_up):
 
     """ Ввод персональных данных и подтверждение подбора камня-талисмана """
     sc = StoneChoice(driver)
-    sc.enter_customer_name("Марина")
     sc.enter_birthday(23, 10, 1982)
+    sc.enter_customer_name("Марина")
     sc.confirm_define_stone()
     sc.assert_word(sc.get_main_word(), 'Ваши личные камни талисманы')
 
@@ -42,3 +43,7 @@ def test_select_product_by_stone_and_type(set_up):
     pp = ProductsPage(driver)
     pp.select_filter_by_earrings()
     pp.compare_name_price_tile_and_details()
+
+    """ Добавление товара в корзину и переход на страницу заказа """
+    dp = DetailsPage(driver)
+    dp.add_to_cart_and_move_to_order()
