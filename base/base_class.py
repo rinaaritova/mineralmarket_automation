@@ -29,7 +29,7 @@ class Base:
     def assert_url(self, result):
         get_url = self.driver.current_url
         assert get_url == result
-        print("Good value URL")
+        print(f"Good value URL {get_url}")
 
     """ Метод переключения на вторую вкладку """
     def move_to_new_tab(self):

@@ -69,7 +69,7 @@ class StoneChoice(Base):
     def enter_customer_name(self, customer_name):
         with allure.step("Enter Customer Name"):
             Logger.add_start_step(method="enter_customer_name")
-            self.get_current_url()
+            # self.get_current_url()
             self.input_customer_name(customer_name)
             print("Customer Named Typed")
             Logger.add_end_step(url=self.driver.current_url, method="enter_customer_name")
@@ -82,7 +82,7 @@ class StoneChoice(Base):
             day = str(day)
             month = str(month)
             year = str(year)
-            self.get_current_url()
+            # self.get_current_url()
             select = Select(self.get_day_dropdown())
             select.select_by_value(day)
             select = Select(self.get_month_dropdown())

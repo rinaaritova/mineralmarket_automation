@@ -44,6 +44,6 @@ def test_select_product_by_stone_and_type(set_up):
     pp.select_filter_by_earrings()
     pp.compare_name_price_tile_and_details()
 
-    """ Добавление товара в корзину и переход на страницу заказа """
+    """ Добавление товара в корзину и переход на страницу заказа. Сравнение названия и цены продукта на детальной странице и в корзине """
     dp = DetailsPage(driver)
-    dp.add_to_cart_and_move_to_order()
+    dp.compare_name_price_details_and_cart()

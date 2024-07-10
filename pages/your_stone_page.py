@@ -43,7 +43,7 @@ class YourStone(Base):
     def select_main_stone(self):
         with allure.step("Select Main Stone"):
             Logger.add_start_step(method="select_main_stone")
-            self.get_current_url()
+            # self.get_current_url()
             sub_str = self.get_main_stone().text
             print(sub_str)
             self.click_main_stone()
