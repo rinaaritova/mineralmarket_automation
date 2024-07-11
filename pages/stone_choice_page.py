@@ -43,21 +43,6 @@ class StoneChoice(Base):
         self.get_customer_name().send_keys(name + ' ')
         print("Enter Customer Name")
 
-    # def select_day_dropdown(self, day):
-    #     select = Select(self.get_day_dropdown())
-    #     select.select_by_value(day)
-    #     print("Enter Day in Dropdown")
-
-    # def select_month_dropdown(self, month):
-    #     select = Select(self.get_month_dropdown())
-    #     select.select_by_value(month)
-    #     print("Enter Month in Dropdown")
-
-    # def select_year_dropdown(self, year):
-    #     select = Select(self.get_year_dropdown())
-    #     select.select_by_value(year)
-    #     print("Enter Year in Dropdown")
-
     def click_define_stone_button(self):
         self.get_define_stone_button().click()
         print("Click Define Stone Button")
@@ -69,7 +54,6 @@ class StoneChoice(Base):
     def enter_customer_name(self, customer_name):
         with allure.step("Enter Customer Name"):
             Logger.add_start_step(method="enter_customer_name")
-            # self.get_current_url()
             self.input_customer_name(customer_name)
             print("Customer Named Typed")
             Logger.add_end_step(url=self.driver.current_url, method="enter_customer_name")
@@ -82,7 +66,6 @@ class StoneChoice(Base):
             day = str(day)
             month = str(month)
             year = str(year)
-            # self.get_current_url()
             select = Select(self.get_day_dropdown())
             select.select_by_value(day)
             select = Select(self.get_month_dropdown())

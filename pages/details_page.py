@@ -1,7 +1,6 @@
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from base.base_class import Base
 from utilities.logger import Logger
@@ -47,11 +46,6 @@ class DetailsPage(Base):
     def click_cart_icon(self):
         self.get_cart_icon().click()
         print("Click Cart Icon")
-
-    # def move_to_cart_icon(self):
-    #     actions = ActionChains(self.driver)
-    #     actions.move_to_element(self.get_cart_icon()).perform()
-    #     print("Move on Cart Icon")
 
     # Methods
 

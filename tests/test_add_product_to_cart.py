@@ -7,15 +7,10 @@ from pages.your_stone_page import YourStone
 import allure
 
 
-@allure.description("Test Select Product By Stone And Type")
-def test_select_product_by_stone_and_type(set_up):
+@allure.description("Test Select Product By Talisman Stone And Type And Add To Cart")
+def test_select_product_by_talisman_stone_and_type_and_add_to_cart(set_up):
 
     driver = set_up
-
-    # options = webdriver.ChromeOptions()
-    # options.add_experimental_option("detach", True)
-    # # options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    # driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
 
     """ Авторизация на сайте """
     lp = LoginPage(driver)
@@ -44,6 +39,6 @@ def test_select_product_by_stone_and_type(set_up):
     pp.select_filter_by_earrings()
     pp.compare_name_price_tile_and_details()
 
-    """ Добавление товара в корзину и переход на страницу заказа. Сравнение названия и цены продукта на детальной странице и в корзине """
+    """ Добавление товара в корзину и переход на страницу корзины. Сравнение названия и цены продукта на детальной странице товара и в корзине """
     dp = DetailsPage(driver)
     dp.compare_name_price_details_and_cart()

@@ -43,21 +43,16 @@ class YourStone(Base):
     def select_main_stone(self):
         with allure.step("Select Main Stone"):
             Logger.add_start_step(method="select_main_stone")
-            # self.get_current_url()
             sub_str = self.get_main_stone().text
             print(sub_str)
             self.click_main_stone()
             self.move_to_new_tab()
-            # webelements_products_labels = self.driver.find_elements(By.XPATH, self.product_labels)
-            # str_products_labels = self.list_str_from_list_webelements(webelements_products_labels)
             elements_products_labels = self.get_elements_products_labels()
             str_products_labels = self.list_str_from_list_webelements(elements_products_labels)
             try:
                 while len(str_products_labels) > 0:
                     self.is_substr_in_list_str(sub_str, str_products_labels)
                     self.click_next_page_button()
-                    # webelements_products_labels = self.driver.find_elements(By.XPATH, self.product_labels)
-                    # str_products_labels = self.list_str_from_list_webelements(webelements_products_labels)
                     elements_products_labels = self.get_elements_products_labels()
                     str_products_labels = self.list_str_from_list_webelements(elements_products_labels)
                     self.click_next_page_button()

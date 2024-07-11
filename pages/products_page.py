@@ -19,7 +19,6 @@ class ProductsPage(Base):
     sort_by = "//select[@id='sort-select']"
     product_labels = "//span[@class='grid-name']"
     next_page_button = "//a[contains(@class,'next_page page')]"
-    # add_to_cart_buttons = "//a[contains(@id, 'AddToCartButton')]"
     images_list = "//ul[@id='product_list ']/li/div"
     prices_list = "//ul[@id='product_list ']/li/div/div/div/div/div/span/span"
     name_in_details = "//h1[@itemprop='name']"
@@ -34,10 +33,6 @@ class ProductsPage(Base):
 
     def get_next_page_button(self):
         return WebDriverWait(self.driver, 5).until(ec.element_to_be_clickable((By.XPATH, self.next_page_button)))
-
-    def get_add_to_cart(self):
-        elements_add_to_cart = self.driver.find_elements(By.XPATH, self.add_to_cart_buttons)
-        return elements_add_to_cart[1]
 
     def get_image_from_list(self):
         elements_images_list = self.driver.find_elements(By.XPATH, self.images_list)
@@ -80,10 +75,6 @@ class ProductsPage(Base):
         self.get_next_page_button().click()
         print("Click Next Page Button")
 
-    def click_add_to_cart(self):
-        self.get_add_to_cart().click()
-        print("Click Add to Cart")
-
     def click_image_from_list(self):
         self.get_image_from_list().click()
         print("Click Image From Products")
@@ -97,8 +88,8 @@ class ProductsPage(Base):
             Logger.add_start_step(method="select_filter_by_earrings")
             filter_text = self.get_filter_by_earrings().text
             sub_str = self.get_substr_from_filter(filter_text)
-            print(sub_str)
             self.click_filter_by_earrings()
+            print("Filter By Earrings Done")
             elements_products_labels = self.get_elements_products_labels()
             str_products_labels = self.list_str_from_list_webelements(elements_products_labels)
             try:
@@ -116,6 +107,16 @@ class ProductsPage(Base):
             self.get_current_url()
             Logger.add_end_step(url=self.driver.current_url, method="select_filter_by_earrings")
 
+    """ Метод перехода на детельную страницу продукта страницу из списка товаров """
+
+    def go_to_details_product_page(self):
+        with allure.step("Go To Details Product Page"):
+            Logger.add_start_step(method="go_to_details_product_page")
+            self.click_image_from_list()
+            self.get_current_url()
+            print("Details Page Displayed")
+            Logger.add_end_step(url=self.driver.current_url, method="go_to_details_product_page")
+
     """ Метод сравнения названия и цены продукта с плитки из списка товаров с детальной страницей товара """
 
     def compare_name_price_tile_and_details(self):
@@ -125,17 +126,13 @@ class ProductsPage(Base):
             print(product_name_tile)
             product_price_tile = self.get_product_price().text
             print(product_price_tile)
-            # number_price_tile = self.remove_rub_and_to_number(product_price_tile)
-            # print(number_price_tile)
-            self.click_image_from_list()
+            self.go_to_details_product_page()
             product_name_details = self.get_name_in_details().text
             print(product_name_details)
             assert self.compare_strings(product_name_tile, product_name_details)
             print("Product Name in Products List and Details are the same")
             product_price_details = self.get_price_in_details().text
             print(product_price_details)
-            # number_price_details = self.remove_rub_and_to_number(product_price_details)
-            # print(number_price_details)
             assert self.compare_numbers(product_price_tile, product_price_details)
             print("Product Price in Products List and Details are the same")
             Logger.add_end_step(url=self.driver.current_url, method="compare_name_price_tile_and_details")
